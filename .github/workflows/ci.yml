@@ -35,10 +35,16 @@ jobs:
           pip install pytest
 
       # ----------------------------
+      # Run tests with pytest
+      # ----------------------------
+      - name: Run tests
+        run: pytest
+
+      # ----------------------------
       # Build Docker image
       # ----------------------------
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/python-app:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/python-app:new .
 
       # ----------------------------
       # Log in to DockerHub
@@ -53,4 +59,4 @@ jobs:
       # Push Docker image to DockerHub
       # ----------------------------
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/python-app:new
